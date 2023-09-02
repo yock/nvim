@@ -1,5 +1,4 @@
 require "lazy-setup"
 require 'core.keymaps'
+require 'core.options'
 
-vim.opt.undodir = vim.fn.stdpath('data') .. '/undo'
-vim.opt.undofile = true
