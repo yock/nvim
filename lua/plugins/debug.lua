@@ -1,5 +1,23 @@
 return {
 		'mfussenegger/nvim-dap',
+		config = function()
+			local dap = require('dap')
+			dap.set_log_level('TRACE')
+			dap.adapters.ruby = function(callback, config)
+				callback {
+					type = 'pipe',
+					pipe = '/var/folders/sx/v_5_t5c95h79b37qqxws62_w0000gn/T/ruby-debug-sock-501/ruby-debug-myockey-72992'
+				}
+			end
+
+			dap.configurations.ruby = {
+				{
+					type = 'ruby',
+					name = 'Rails server',
+					request = 'attach',
+				},
+			}
+		end,
 		keys = {
 			{ '<Leader>dc', function() require('dap').continue() end },
 			{ '<Leader>ds', function() require('dap').step_over() end },
@@ -12,12 +30,6 @@ return {
 			{ '<Leader>dL', function() require('dap').list_breakpoints() end },
 		},
 		dependencies = {
-			{
-				'suketa/nvim-dap-ruby',
-				config = function()
-					require('dap-ruby').setup()
-				end
-			},
 			{
 				'rcarriga/nvim-dap-ui',
 				keys = {
