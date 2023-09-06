@@ -6,7 +6,15 @@ return {
 			dap.adapters.ruby = function(callback, config)
 				callback {
 					type = 'pipe',
-					pipe = '/var/folders/sx/v_5_t5c95h79b37qqxws62_w0000gn/T/ruby-debug-sock-501/ruby-debug-myockey-72992'
+					pipe = "${pipe}",
+          executable = {
+            command = 'bin/rdbg',
+            args = { '-n', '-O', '--sock-path', "${pipe}", '-c', '--', 'bin/rails', 'server' },
+          },
+          options = {
+            source_filetype = 'ruby',
+            initialize_timeout_sec = 5,
+          }
 				}
 			end
 
