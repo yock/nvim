@@ -8,7 +8,7 @@ return {
 		end,
 		set_light_mode = function()
 			vim.api.nvim_set_option('background', 'light')
-			vim.cmd('colorscheme catppuccin-frappe')
+			vim.cmd('colorscheme catppuccin-latte')
 		end,
 	},
 	dependencies = {
@@ -16,6 +16,11 @@ return {
 		name = "catppuccin",
 		priority = 1000,
 		config = {
+      color_overrides = {
+        latte = {
+          pink = "#bd5fa3",
+        },
+      },
 			term_colors = false,
 			compile = {
 				enabled = true,
