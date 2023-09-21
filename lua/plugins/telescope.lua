@@ -11,6 +11,15 @@ return {
 		"nvim-lua/plenary.nvim",
 		"sharkdp/fd",
 		"nvim-telescope/telescope-fzy-native.nvim",
-		"nvim-treesitter/nvim-treesitter",
+    {
+      "nvim-treesitter/nvim-treesitter",
+      opts = {
+        ensure_installed = { 'ruby', 'javascript', 'lua', 'typescript', 'json', 'scss', 'html', 'css', 'yaml' },
+        auto_install = true,
+        highlight = {
+          enable = true,
+        }
+      }
+    }
 	}
 }
