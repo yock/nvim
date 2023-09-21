@@ -4,8 +4,9 @@ return {
 		'folke/neodev.nvim',
 	},
 	config = function()
-		solargraph = {
-			cmd = { os.getenv('HOME') .. '/.rbenv/shims/solargraph', 'stdio' },
-		}
+    lspconfig = require('lspconfig')
+    lspconfig.rubocop.setup{}
+    lspconfig.ruby_ls.setup{}
+    lspconfig.tsserver.setup{}
 	end
 }
